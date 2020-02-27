@@ -36,7 +36,6 @@ namespace Cakes.Gateway
             if (podcastsResponse == null) throw new Exception("later");
             var podcasts = await podcastsResponse.DownstreamResponse.Content.ReadAsStringAsync();
             var deserialized = DeserializePodcasts(podcasts);
-            var serialized = JsonConvert.SerializeObject(deserialized);
             var podcastsMobile = deserialized.Items.ToViewModel();
             var responseBuilder = new StringBuilder();
             responseBuilder.Append(JsonConvert.SerializeObject(podcastsMobile));
